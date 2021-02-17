@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student portal</title>
+    <link rel="icon" type="image/png" href="../static/images/school.png"/>
+       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!--    <script src="../static/index.js"></script>-->
+    <style>
+
+        body{
+background: #fff url(static/images/bg.jpg) repeat top left;
+}
+</style>
+</head>
+<body>
+<header>
+    <nav>
+    <div style="background-color:teal" class="nav-wrapper">
+<!--      <a href="#" class="brand-logo">Logo</a>-->
+<!--        <img src="/static/images/school.png"/>-->
+
+        <img style="margin-left:2%" height="50"  src="/static/images/school.png"/>
+        <span style=" font-size:19pt; font-family:cursive;"><b>A.H</b> <u>School</u> Systems</span>
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="nav-item">
+<!--        <a class="nav-link" href="/myPortalteacher" style="font-family:cursive; font-size:16pt; "><img height="47" style="border-radius:12rem"  src="../static/images/std.jpg"<b>My Portal</b> </a>-->
+<p>
+        <a href="/logoutTO" style="background-color:red" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+      </p>
+
+</ul>
+
+
+    </div>
+  </nav>
+<div style="font-size:19pt;
+
+  width:25%;
+  background-color:teal;
+<!--   pading-bottom:5%;-->
+  margin-left: 33%;
+ font-family: cursive;
+ font-size:19pt;
+ color:rgb(53, 30, 30);
+ font-style: italic;
+ text-align: center;
+    padding-bottom:0.5%;
+  border-bottom-left-radius: 4rem;
+  border-bottom-right-radius: 4rem;
+box-shadow: 1px 5px 8px black;
+margin-bottom:-5%;
+">
+<p><b>Students </b></p>
+    </div>
+
+</header>
+<!--<p><b>Students Information</b></p>-->
+    </div>
+</header>
+ <h2>           </h2>
+             <div class="container">
+                <div class="row">
+             {% for user in data: %}
+ <div class="col-6 col-md-4">
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+<!--    <h2 class="header">Horizontal Card</h2>-->
+<!--     {{data}}-->
+    <div class="card horizontal">
+      <div class="card-image">
+        <img  height="180" style="border-bottom-right-radius:5rem;" class="card-img-top"  src="/static/{{user["picture"]}}" />
+        <span>
+          <img style="margin-left:125%; margin-top:-76%; margin-bottom:32%;" src="../static/images/student.png"/>
+
+        </span>
+<!--          <p style="margin-left:72%;" >Student</p>-->
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+<!--          <p>I am a very simple card. I am good at containing small bits of information.</p>-->
+<table>
+  <tr>
+      <td><b>Name:</b></td>
+      <td>{{user["userName"]}}</td>
+  </tr>
+  <tr>
+      <td><b>Email:</b></td>
+      <td>{{user["email"]}}</td>
+  </tr>
+  <tr>
+      <td><b>Phone:</b></td>
+      <td>{{user["phone"]}}</td>
+  </tr>
+   
+</table>
+
+        </div>
+         <form action="/deleteTeacher" method="post">
+                                      <input name="target_user" value={{user["userName"]}} type="hidden"/>
+                                      <!-- <button  class="btn btn-danger">Delete</button> -->
+         </form>
+      </div>
+    </div>
+  </div>
+
+        {% endfor %}
+    </div>
+ </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

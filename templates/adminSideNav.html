@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Admin</title>
+  <link rel="icon" type="image/png" href="../static/images/school.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- <link rel="stylesheet" href="./style.css"> -->
+<style>
+        body{
+background: #fff url(static/images/bg.jpg) repeat top left;
+}
+.side-nav li > a {
+  padding: 0 16px;
+}
+
+.side-nav .divider {
+  margin: 0;
+  height: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: transparent;
+}
+
+.sidenav-header {
+  background-size: cover;
+  margin-bottom: 0px;
+  padding: 15px 0 0 15px;
+}
+.sidenav-header .row {
+  margin-bottom: 0;
+}
+
+.sidenav-footer {
+  margin-bottom: 0px;
+  padding: 0;
+}
+.sidenav-footer .row {
+  margin-bottom: 0;
+}
+.sidenav-footer .row .social-icons a {
+  opacity: 0.5;
+  padding: 0;
+  text-align: center;
+}
+.sidenav-footer .row .social-icons a:hover {
+  background-color: inherit;
+  opacity: 1;
+}
+.imgStyle{
+    width:13%;
+    }
+        .tableStyle
+        {
+            border:double;
+
+        }
+        body{
+background: #fff url(static/images/bg.jpg) repeat top left;
+}
+        .formStyl{
+            border:double;
+            padding:12%;
+            margin-left:2%;
+            width:150%;
+        }
+        .searchStyle{
+        border:solid;
+        width:150%;
+        padding:5%;
+        }
+        #btnAdd{
+        margin-left:12%;
+        margin-top:2%;
+        }
+        #tableStyle{
+        width:50%;
+
+margin-left:8%;
+
+}
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<nav>
+    <div class="nav-wrapper teal">
+      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <img    height="50"  src="../static/images/school.png"/>
+        
+ 
+      <span  style="color:cornsilk; font-size:19pt; font-family:cursive;"><b>A.H</b> <u>School</u> Systems</span>
+  
+      <ul class="right hide">
+        <li><a href="https://codepen.io/collection/nbBqgY/" target="_blank">Sass</a></li>
+        <li><a href="https://codepen.io/collection/nbBqgY/" target="_blank">Components</a></li>
+        <li><a href="https://codepen.io/collection/nbBqgY/" target="_blank">Javascript</a></li>
+        <li><a href="https://codepen.io/collection/nbBqgY/" target="_blank">Mobile</a></li>
+      </ul>
+      
+      <ul class="side-nav grey darken-2" id="mobile-demo">
+        
+        
+        <li class="sidenav-header blue">
+          <div class="row">
+            <div class="col s4">
+                <img src="../static/images/admin.png" width="55px" height="55px" alt="" class="responsive-img valign profile-image">
+            </div>
+            <div class="col s8">
+                <h6>{{adminLogin}}</h6>
+                <ul id="profile-dropdown" class="dropdown-content">
+                    <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                    <li><a href="#"><i class="material-icons">settings</i>Setting</a></li>
+                    <li><a href="#"><i class="material-icons">help</i>Help</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="material-icons">lock</i>Lock</a></li>
+                    <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+        
+        <li class="blue">
+          <ul class="collapsible collapsible-accordion">
+              <li>
+                <a class="collapsible-header white-text waves-effect waves-blue "><i class="material-icons white-text ">language</i>Language <i class="material-icons right white-text" style="margin-right:0;">arrow_drop_down</i></a>
+                <div class="collapsible-body z-depth-3">
+                  <ul>
+                    <li><a class="waves-effect waves-blue" href="#">English</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">العربية</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">中文</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Čeština</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Nederlands</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Français</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Deutsch</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">한국어</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Português</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Русский</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Español</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Svenska</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">ภาษาไทย</a></li>
+                    <li><a class="waves-effect waves-blue" href="#">Türkçe</a></li>
+                    <li><div class="divider"></div></li>
+                  </ul>
+                </div>
+              </li>
+          </ul>
+        </li>
+        
+        
+        
+     
+         
+        <li class="white"> 
+          
+          
+          <a    href="\student" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size:14pt;"><i class="material-icons">school</i>Student page</a>
+   
+        </a>
+        
+        </li>
+        
+        
+        <li class="white"> 
+          
+          
+          <a    href="\teacher" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size:14pt;"><i class="material-icons">person_pin</i>Teachers page</a>
+   
+        </a>
+        
+        </li>
+         <li class="white"><div class="divider"></div></li>
+        <li class="white"><a href="/" class="waves-effect waves-blue"><i class="material-icons">logout</i> Log-Out<span class="new badge right yellow darken-3"></span></a></li>
+        
+        <li class="sidenav-footer grey darken-2">
+          <div class="row">  
+            <div class="social-icons">
+              <div class="col s2">
+                <a href="#"><i class="fa fa-lg fa-linkedin-square"></a></i>
+              </div>
+              <div class="col s2">
+                <a href="#"><i class="fa fa-lg fa-facebook-official"></a></i>
+              </div>
+              <div class="col s2">
+                <a href="#"><i class="fa fa-lg fa-twitter"></a></i>
+              </div>
+              <div class="col s2">
+                <a href="#"><i class="fa fa-lg fa-google-plus"></a></i>
+              </div>
+              <div class="col s2">
+                <a href="#"><i class="fa fa-lg fa-pinterest"></a></i>
+              </div>
+              <div class="col s2">
+                <a href="#"><i class="fa fa-lg fa-youtube"></a></i>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+
+  
+  <div class="container" style="margin-top:3%; margin-left:23%; ">
+
+    <!-- <div class="row"> -->
+         <div class="col-12 ">
+    <!-- <div class="card animated bounceInDown myForm"  style="margin-left:5%;"> -->
+  <!-- <div style="box-shadow:2px -4px 3px black ;background-color:sandyBrown; padding:3%;margin-top:-5.5%;width:30%;margin-left:29%; border-radius:5rem;font-size:16pt;font-family:cursive">Add user</div> -->
+          <!-- <div  > -->
+              <!-- <img style="margin-bottom:-12%;margin-top:-12%;margin-left:39%;" src="../static/images/profile.png"/> -->
+             
+      <div  class="card horizontal" style="   position: absolute;">
+        
+        <div class="card-stacked">
+          <img src="../static/images/man.png" width="70" style="margin-left: 45%;margin-top: -7%;" /> 
+          <div class="card-content">
+            <form action="/addUser" onsubmit="M.toast({html: 'User Added Successfully!'})" method="POST" enctype="multipart/form-data">
+            <div id="dynamic_container">
+                          {{picSelect}}
+  <div class="input-field col s7">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="icon_prefix" type="text" name="name" required="required" class="validate">
+            <label for="icon_prefix">First Name</label>
+          </div>
+  <!--							<input type="text" style="width:100%;" name="name" required="required" placeholder="Name" class="form-control"/>-->
+  <!--						</div>-->
+  <!--                        <br/>-->
+                          <div class="input-group">
+  
+                           <input   name="password" type="hidden"/>
+  <div class="input-field col s">
+      <i class="material-icons prefix">email</i>
+            <input id="email" type="email" name="email" required="required" class="validate">
+            <label for="email">Email</label>
+            <span class="helper-text" data-error="Invalid-Email" data-success="right || *Member will be Notified by Email">*Member will be Notified by Email</span>
+          </div>
+       
+  <!--							<input type="email" style="width:100%;" name="email" required="required" placeholder="Student Email" class="form-control"/>-->
+  <!--                            *Member will be Notified by Email!-->
+                <div class="input-field col s6">
+            <i class="material-icons prefix">phone</i>
+            <input id="icon_telephone" type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required="required" name="phone" class="validate"/>
+            <label for="icon_telephone">Telephone</label>
+          
+          </div>
+  <!--                            <input type="text"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="width:100%;" name="phone" required="required" placeholder="Student Phone" class="form-control"/>-->
+  <!--						</div>-->
+            </div>
+  
+  <span style="margin-left:20%;"></span>
+  <div class="input-field col s2">
+     <div class="radio">
+            <label>
+              <input onclick="M.toast({html: 'Adding Student'})" type="radio"  name="role" value="Student"  checked>
+              <span class="cr"><i class="cr-icon glyphicon glyphicon-ok-sign"></i></span>
+              <b>Student</b>
+            </label>
+          </div>
+  </div>
+  <br/>
+  
+  
+                          <div class="input-field col s2">
+                <div class="radio">
+            <label>
+              <input onclick="M.toast({html: 'Adding Teacher'})" type="radio" name="role" value="Teacher">
+              <span class="cr"><i class="cr-icon glyphicon glyphicon-ok-sign"></i></span>
+              <b>Teacher</b>
+            </label>
+          </div>
+  </div>
+                          <br/>
+                        
+  
+                           <div class="file-field input-field">
+  <!--    <div class="input-field col s11">-->
+        <div class="btn">
+          <span>Picture</span>
+          <input  type="file" required="required" name="file" >
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Upload one file">
+        </div>
+  <!--    </div>-->
+                           </div>
+  <!--                         <input type="file" style="width:100%;" required="required" name="file"/>-->
+          <div class="card-action">
+  
+             <button  style="margin-left:39%;"  id="btnAdd" class="btn btn-success"><i class="material-icons prefix">add_to_photos</i> Submit Data</button>
+          </div>
+                          </form>
+        </div>
+      </div>
+    </div>
+      <!-- </div> -->
+  
+  
+  <!-- </div> -->
+  
+  
+    </div>
+    <!-- </div> -->
+  <!--</div>-->
+  <!-- </div> -->
+
+<!-- Gitter Chat Link -->
+<!-- <div class="fixed-action-btn"><a class="btn-floating btn-large red" href="https://gitter.im/Dogfalo/materialize" target="_blank"><i class="large material-icons">chat</i></a></div> -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js'></script>
+<script>
+// SIDEBAR
+$(document).ready(function(){
+  $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
+  // START OPEN
+  $('.button-collapse').sideNav('show');
+});
+</script>
+<script src='https://codepen.io/j_holtslander/pen/pLNzQb.js'></script>
+
+<!-- <script  src="./script.js"></script> -->
+
+</body>
+</html>
+
+

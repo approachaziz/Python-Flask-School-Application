@@ -1,0 +1,968 @@
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+    <title>ah-School Online</title>
+<link rel="icon" type="image/png" href="../static/images/school.png"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../static/mainTem/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../static/mainTem/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../static/mainTem/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
+    />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+   <style>
+   .dropLinks{
+     background-color: white;
+   }
+   .chatbox {
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+
+    -webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+z-index: 999;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.chatbox--tray {
+    bottom: -350px;
+}
+
+.chatbox--closed {
+    bottom: -400px;
+}
+
+.chatbox .form-control:focus {
+    border-color: #1f2836;
+}
+
+.chatbox__title,
+.chatbox__body {
+    border-bottom: none;
+}
+
+.chatbox__title {
+    min-height: 50px;
+    padding-right: 10px;
+    background-color: #1f2836cc;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    cursor: pointer;
+
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.chatbox__title h5 {
+    height: 50px;
+    margin: 0 0 0 15px;
+    line-height: 50px;
+    position: relative;
+    padding-left: 20px;
+
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.chatbox__title h5 a {
+    color: #fff;
+    max-width: 195px;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatbox__title h5:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: #4CAF50;
+    border-radius: 6px;
+
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.chatbox__title__tray,
+.chatbox__title__close {
+    width: 24px;
+    height: 24px;
+    outline: 0;
+    border: none;
+    background-color: transparent;
+    opacity: 0.5;
+    cursor: pointer;
+
+    -webkit-transition: opacity 200ms;
+    transition: opacity 200ms;
+}
+
+.chatbox__title__tray:hover,
+.chatbox__title__close:hover {
+    opacity: 1;
+}
+
+.chatbox__title__tray span {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-bottom: 2px solid #fff
+}
+
+.chatbox__title__close svg {
+    vertical-align: middle;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.2px;
+}
+
+.chatbox__body,
+.chatbox__credentials {
+    padding: 15px;
+    border-top: 0;
+    background-color:#DCDCDC;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.chatbox__credentials {
+    display: none;
+}
+
+.chatbox__credentials .form-control {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.chatbox__body {
+    overflow-y: auto;
+}
+
+.chatbox__body__message {
+    position: relative;
+}
+
+.chatbox__body__message p {
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 1px rgba(100, 100, 100, 0.1);
+    box-shadow: 1px 1px rgba(100, 100, 100, 0.1);
+}
+
+.chatbox__body__message img {
+    width: 60px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fcfcfc;
+    position: absolute;
+    top: 15px;
+}
+
+.chatbox__body__message--left p {
+    margin-left: 15px;
+    padding-left: 30px;
+    text-align: left;padding-top: 25px;
+}
+
+.chatbox__body__message--left img {
+    left: -5px;
+}
+
+.chatbox__body__message--right p {
+    margin-right: 15px;
+    padding-right: 30px;
+    text-align: right;
+}
+
+.chatbox__body__message--right img {
+    right: -5px;
+}
+
+.chatbox__message {
+    padding: 15px;
+    min-height: 50px;
+    outline: 0;
+    resize: none;
+    border: none;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #fefefe;
+}
+
+.chatbox--empty {
+    height: 262px;
+}
+
+.chatbox--empty.chatbox--tray {
+    bottom: -212px;
+}
+
+.chatbox--empty.chatbox--closed {
+    bottom: -262px;
+}
+
+.chatbox--empty .chatbox__body,
+.chatbox--empty .chatbox__message {
+    display: none;
+}
+
+.chatbox--empty .chatbox__credentials {
+    display: block;
+}
+.chatbox_timing {
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    top: 2px;
+}
+.chatbox_timing ul{padding:0;margin:0}
+.chatbox_timing ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.chatbox_timing ul li a{display:block;color:#747474}
+.ul_msg {
+
+    
+    padding: 10px !important;
+
+}
+.chatbox__body__message--right .ul_section_full{
+	margin-right: 15px;
+padding-right: 30px;
+text-align: right;
+border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 1px rgba(100, 100, 100, 0.1);
+    box-shadow: 1px 1px rgba(100, 100, 100, 0.1);margin-bottom: 15px;
+padding-bottom: 5px;padding-top:15px;
+}
+.chatbox__body__message--left .ul_section_full {
+
+    margin-left: 15px;
+    padding-left: 15px;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 1px rgba(100, 100, 100, 0.1);
+    box-shadow: 1px 1px rgba(100, 100, 100, 0.1);
+
+}
+.ul_msg{padding:0;margin:0px}
+.ul_msg li{list-style:none;display:block}
+.ul_msg2{padding:0;margin:0px;text-align: right;}
+.ul_msg2 li{list-style:none;display:inline-block;margin-right: 15px;}
+.chatbox__body__message--right .chatbox_timing  {
+    position: absolute;
+    left: 10px;
+    font-size: 12px;
+    top: 2px;
+}
+.chatbox__body__message--right .ul_msg2{text-align:left}
+.chatbox__body__message--right .ul_msg2 li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 15px;margin-right:0px
+}
+.chat_set_height {
+    height: 40px;
+    margin-top: 1px;
+}
+.chatbox22 .form-control:focus {
+    border-color: #DCDCDC;
+}
+.width50{width:50%;float:left;background:#ECECEC;}
+/*======================Chat Box Ends=====================================================*/
+/*======================Message=====================================================*/
+.message_check{padding-top:10px;}
+.messsade_date {
+    text-align: left;
+    padding-top: 9px;
+}
+.messsade_date a{color:#000;}
+.padleftright0{padding-left:0px;padding-right:0px;}
+.message_box_area {
+    color: #000;
+    cursor: pointer;
+}
+.create_m {
+    border: 1px solid #ccc !important;
+}
+.fileinput-button {
+    float: left;
+    margin-right: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.fileinput-button {
+    background: none repeat scroll 0 0 #eeeeee;
+    border: 1px solid #e6e6e6;margin-top: 15px;
+}
+.fileinput-button {
+    float: left;
+    margin-right: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.fileinput-button input {
+    cursor: pointer;
+    direction: ltr;
+    font-size: 23px;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(-300px, 0px) scale(4);
+}
+.fileupload-buttonbar .btn, .fileupload-buttonbar .toggle {
+    margin-bottom: 5px;
+}
+.create_m:focus {
+    border-color: #66afe9 !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6) !important;
+}
+.col-lg-3.control-label {
+    text-align: left;
+}
+   .dropLinks:hover{
+     /* background-color: rgb(226, 186, 150); */
+     text-decoration: none;
+     /* color:black; */
+   }
+   @media (min-width: 992px) {
+  .animate {
+    animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform:translateY(0rem);
+    opacity: 1;
+  }
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1;
+  }
+  0% {
+    -webkit-transform: translateY(1rem);
+    -webkit-opacity: 0;
+  }
+}
+
+.slideIn {
+  -webkit-animation-name: slideIn;
+  animation-name: slideIn;
+}
+#navbarDropdown{
+  color:seashell;
+  font-size: 17pt;
+}
+/* #loginR{ */
+  /* padding-left: 100%; */
+/* } */
+/* .navbar-nav{ */
+  /* padding-left: 57%; */
+/* } */
+.youtubeLink{
+  color:rgb(102, 54, 54);
+
+}
+.youtubeLink:hover{
+  text-decoration: none; 
+  color:rgb(102, 54, 54);
+
+}
+.youtubeLink1{
+  color:rgb(255, 255, 255);
+
+}
+.youtubeLink1:hover{
+  text-decoration: none; 
+  color:rgb(255, 255, 255);
+
+}
+ 
+      
+     
+      #chatbox {
+        margin-left: auto;
+        margin-right: auto;
+        width: 95%;
+        margin-top: 20px;
+      }
+      #userInput {
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        margin-top: 60px;
+        border-radius: 12px;
+        background-color: rgb(255, 255, 255);
+        color: black;
+      }
+    
+      #textInput {
+        width: 90%;
+        border: none;
+        border-bottom: 3px solid black;
+        font-family: monospace;
+        font-size: 17px;
+      }
+      .userText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: right;
+        line-height: 30px;
+      }
+      .userText span {
+        background-color: #808080;
+        padding: 10px;
+        border-radius: 2px;
+        border-top-left-radius: 7rem;
+        border-bottom-left-radius: 7rem;
+      }
+      .botText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: left;
+        line-height: 30px;
+      }
+      .botText span {
+        background-color: #2a56ce;
+        padding: 10px;
+        border-top-right-radius: 7rem;
+        border-bottom-right-radius: 7rem;
+      }
+      #tidbit {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+      }
+      .boxed {
+        margin-left: auto;
+        margin-right: auto;
+        width: 78%;
+        margin-top: 60px;
+        border: 1px solid green;
+      }
+      .box {
+        border: 2px solid black;
+      }
+      </style>
+      <script>
+      (function($) {
+    $(document).ready(function() {
+        var $chatbox = $('.chatbox'),
+            $chatboxTitle = $('.chatbox__title'),
+            $chatboxTitleClose = $('.chatbox__title__close'),
+            $chatboxCredentials = $('.chatbox__credentials');
+        $chatboxTitle.on('click', function() {
+            $chatbox.toggleClass('chatbox--tray');
+        });
+        $chatboxTitleClose.on('click', function(e) {
+            e.stopPropagation();
+            $chatbox.addClass('chatbox--closed');
+        });
+        $chatbox.on('transitionend', function() {
+            if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
+        });
+        
+    });
+})(jQuery);
+      </script>
+  </head>
+  <body>
+<!-- chating divs -->
+<!-- <div class="container"> -->
+  <!-- <h2 style="text-align:center">Chat-box Created By <span class="red" style="color:red">M</span>ilind <span class="red" style="color:red">K</span>amthe</h2> -->
+<!-- <p style="text-align:center">creativemk22@gmail.com</p> -->
+<!-- <hr> -->
+<!-- <div class="row"> -->
+  <div class="chatbox chatbox22 chatbox--tray" style="width:30%">
+<div class="chatbox__title">
+    <h5><a href="javascript:void()">Leave a message</a></h5>
+    <!--<button class="chatbox__title__tray">
+        <span></span>
+    </button>-->
+    <button class="chatbox__title__close">
+        <span>
+            <svg viewBox="0 0 12 12" width="12px" height="12px">
+                <line stroke="#FFFFFF" x1="11.75" y1="0.25" x2="0.25" y2="11.75"></line>
+                <line stroke="#FFFFFF" x1="11.75" y1="11.75" x2="0.25" y2="0.25"></line>
+            </svg>
+        </span>
+    </button>
+</div>
+<div class="chatbox__body">
+
+  <!-- <div class="boxed"> -->
+    <div>
+      <div id="chatbox">
+        <img
+          src="../static/images/admin.png"
+          alt="Abdul Aziz"
+          style="width:60px;height:50px;"
+        />
+        <p class="botText">
+          <span>Hi! Welcome to A-H Schools<br/> !How may i assist you❤️</span>
+        </p>
+      </div>
+      
+ 
+<div class="panel-footer">
+  <div id="userInput">
+    <input id="textInput" type="text" name="msg" placeholder="Message" />
+  </div>
+</div>
+<script>
+  function getBotResponse() {
+    var rawText = $("#textInput").val();
+    var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+    $("#textInput").val("");
+    $("#chatbox").append(userHtml);
+    document
+      .getElementById("userInput")
+      .scrollIntoView({ block: "start", behavior: "smooth" });
+    $.get("/get", { msg: rawText }).done(function(data) {
+      var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+      $("#chatbox").append(botHtml);
+      document
+        .getElementById("userInput")
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+    });
+  }
+  $("#textInput").keypress(function(e) {
+    if (e.which == 13) {
+      getBotResponse();
+    }
+  });
+</script>
+</div>
+                <!-- </div> -->
+            
+</div>
+  
+</div>
+<!-- </div> -->
+
+
+    <div  class="navbar-fixed">
+      <div class="navbar navbar-expand-sm bg-dark teal"  >
+        <!-- Brand -->
+        
+        <img  style="margin-left:2%" height="50"  src="../static/images/school.png"/>
+        
+ 
+          <span  style="color:cornsilk; font-size:19pt; font-family:cursive;"><b>A.H</b> <u>School</u> Systems</span>
+      
+        <!-- Links -->
+        <span style="padding-left: 50%;"></span>
+        <div class="row" >
+          <div class="col s1">
+        <!-- <ul class="navbar-nav"> -->
+          
+          <!-- <li class="nav-item"> -->
+            <a class="nav-link" id="navbarDropdown" href="#">Admissions</a>
+            </div>
+          <!-- </li> -->
+          <!-- <li class="nav-item" id="loginR"> -->
+            <div class="col s1">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Login
+            </a>
+            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+              <a href="/adminLogin" class="dropdown-item"  >
+                <img height="50" class="dropLinks" src="../static/images/admin.png" alt="admin Login"/>
+                 <b>Admin</b>  
+             </a>
+                <a href="/userLogin" class="dropdown-item"  >
+                  <img height="50" class="dropLinks" src="../static/images/team.png" alt="user Login"/>                  
+                  <b>User</b>  
+                </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Select Credentials</a>
+            </div>
+          <!-- </li> -->
+          </div>
+           </ul>
+        </div>
+      </div>
+      </nav>
+ 
+    </div>
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br><br>
+          <h1 class="header center teal-text text-lighten-2">
+          <span  class="animated bounceInUp	"  style="  animation-duration: 5s;
+          animation-delay: 2s;
+          animation-iteration-count: 10;">
+            Welcome to A.H School
+          </span>
+          </h1>
+          <div class="row center">
+            <div class="header col s12 ">
+            <h5   class="animated heartBeat	"  style="font-family:cursive; color:black; animation-duration: 5s;
+            animation-delay: 4s;
+            animation-iteration-count: infinite;">A Step Toward A Better Future</h5>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Features Of Site
+                </button>
+          </div>
+        </div>
+          <div class="row center">
+            <!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
+          
+          </div>
+          <br><br>
+  
+        </div>
+      </div>
+      <div class="parallax"><img src="../static/images/back12.jpg" alt="Unsplashed background img 1"></div>
+    </div>
+  
+<div style="overflow-y:hidden">
+  <div class="modal" id="myModal">
+ <button type="button" class="btn btn-danger" style="float:right" data-dismiss="modal">Close</button>
+
+          <h5 style="margin-left:40%;font-family:cursive;font-size:18pt;">Features of Site!</h5>
+
+        <div  class="container">
+
+            <div class="row">
+    <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><img src="../static/images/plus.png"></span>
+          <h6>Registration and Sign-in </h6>
+            <br/>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text" style="margin-bottom: -15%;">
+          <span class="card-title"><img height="50" hight src="../static/images/chatting.png"></span>
+          <h6>live Chatting </h6>
+            <br/>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><img src="../static/images/gmail (1).png"></span>
+          <h6>Emalil on Add Record</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><img src="../static/images/reading.png"></span>
+          <h6>Specific Student Portal</h6>
+<!--            <p>User can modify his information</p>-->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><img height="37" src="../static/images/classroom1.png"></span>
+          <h6>Specific Teacher's Portal</h6>
+<!--            <p>User can modify his information</p>-->
+        </div>
+      </div>
+    </div>
+
+                    <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><img src="../static/images/reload.png"></span>
+          <h7>Record Updation </h7>
+<!--            <p>User can modify his information</p>-->
+<br/>
+<br/>
+                  
+        </div>
+      </div>
+    </div>
+                          <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><img height="50" src="../static/images/arrow.png"></span>
+          <h6>Logout</h6>
+            <br/>
+            
+            
+            
+            
+<!--            <p>User can modify his information</p>-->
+        </div>
+      </div>
+    </div>
+</div>
+
+        </div>
+
+    </div>
+  </div>
+  
+    <div class="container">
+      <div class="section">
+  
+        <!--   Icon Section   -->
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center brown-text"><i class="material-icons">timeline</i></h2>
+              <h5 class="center">Speeds up development</h5>
+  
+              <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            </div>
+          </div>
+  
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center brown-text"><i class="material-icons">accessibility</i></h2>
+              <h5 class="center">Personal Growth</h5>
+  
+              <p class="light">By utilizing elements and principles of teaching, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            </div>
+          </div>
+  
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center brown-text"><i class="material-icons">supervised_user_circle</i></h2>
+              <h5 class="center">Team management and techniques</h5>
+  
+              <p class="light">
+                We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.
+              
+              </p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+  
+    <div class="parallax-container valign-wrapper">
+      <div class="section ">
+        <div class="container">
+          <div class="row center">
+            <div class="col s12 m7">
+              
+              <div class="card horizontal" style="background-color: rgba(236, 228, 228, 0.164);">
+                <!-- <div class="card-image"> -->
+                  
+                  <!-- <div class="container"> -->
+                   <div class="row">
+                  <div class="col">
+                    <img style="border-bottom-left-radius: 5rem;border-bottom-right-radius: 5rem;box-shadow: 3px 5px 7px black;"  height="300"  src="../static/30530444_1923228691083261_6058144292531476500_n.jpg">
+                  </div>
+                  <div class="col">
+                    <h2 class="header" style="color: black;"><u>Ceo Message</u></h2>
+                      <p style="font-family:cursive; color: black; font-size: 22px;">Me Bolta Nai Kerke Dikhata !<br/>After This Project i will do another one with more functionalities and much more compliances and one day my projects will be on global market</p>
+                  </div>
+                  
+                  </div>
+                <!-- </div> -->
+
+                <!-- </div> -->
+                 
+              </div>
+            </div>
+            <!-- <div class="header col s12 ">
+              <h1   class="animated flipInX	"  style="font-family:cursive; color:black; animation-duration: 5s;
+              animation-delay: 5s;
+              animation-iteration-count: 2;">A Step Toward A Better Future</h1>
+                
+            </div> -->
+            <!-- <h5 class="header col s12 light">A modern Era of World is now Our Next Stop</h5> -->
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img src="../static/images/back4.jpg" alt="Unsplashed background img 2"></div>
+    </div>
+  
+    <div class="container">
+      <div class="section">
+  
+        <div class="row">
+          <div class="col s12 center">
+            <h3><i class="mdi-content-send brown-text"></i></h3>
+            <h4>Contact Us</h4>
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="material-icons">email</i></h2>
+                  <!--   <h5 class="center">Speeds up development</h5> -->  
+      
+                  <h5>
+                    ah.schoolsmail@gmail.com
+                  </h2>   
+               
+                </div>
+              </div>
+      
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="material-icons">phone</i></h2>
+                  <h5 class="center">+923041199989</h5>
+      
+                 </div>
+              </div>
+      
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="material-icons">skip_next</i></h2>
+                  <h5 class="center"> <a class="youtubeLink" href="https://www.youtube.com/channel/UCOUj_keEgVNpUZpuk0J36ow/videos?view_as=subscriber">approach knowledge</a></h5>
+      
+                   
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+  
+    <div class="parallax-container valign-wrapper">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <div class="row center">
+            <!-- <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5> -->
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img src="../static/images/back1.jpg" alt="Unsplashed background img 3"></div>
+    </div>
+  
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Our Moto</h5>
+            <p class="grey-text text-lighten-4"> I am a university student working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+  
+  
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Administration</h5>
+            <ul>
+              <li><a class="white-text" href="#!">admissions</a></li>
+              <li><a class="white-text" href="#!">Programs</a></li>
+              <li><a class="white-text" href="#!">Fee Structure</a></li>
+              <li><a class="white-text" href="#!">Faculty</a></li>
+            </ul>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Connect</h5>
+            <ul>
+              <li>    <i class="material-icons prefix">phone</i> +923041199989</li>
+              <li><i class="material-icons prefix">email</i> ah.schoolsmail@gmail.com</li>
+              <li>
+                <i class="material-icons">skip_next</i>
+                <a class="youtubeLink1" href="https://www.youtube.com/channel/UCOUj_keEgVNpUZpuk0J36ow/videos?view_as=subscriber">approach knowledge</a>
+              </li>
+              <li><i class="material-icons">home</i> Satellite town samundri road   faisalabad</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        Made by <a class="brown-text text-lighten-3" href="#">Abdul Aziz</a>
+        </div>
+      </div>
+    </footer>
+  
+  
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../static/mainTem/js/materialize.js"></script>
+    <script src="../static/mainTem/js/init.js"></script>
+  
+    </body>
+  </html>

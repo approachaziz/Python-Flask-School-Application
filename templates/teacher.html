@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ah-admin panal</title>
+       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!--    <script src="../static/index.js"></script>-->
+    <style>
+
+        body{
+background: #fff url(static/images/bg.jpg) repeat top left;
+}
+</style>
+</head>
+<body>
+<div>
+    <header>
+ <nav>
+    <div style="background-color:teal" class="nav-wrapper">
+<!--      <a href="#" class="brand-logo">Logo</a>-->
+<!--        <img src="/static/images/school.png"/>-->
+
+        <img style="margin-left:2%" height="50"  src="/static/images/school.png"/>
+        <span style=" font-size:19pt; font-family:cursive;"><b>A.H</b> <u>School</u> Systems</span>
+<!--        <img src="/static/images/school.png"/>-->
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+         
+      
+    <a  href="/users" style="background-color:orange" class="btn btn-info btn-lg">
+        <span  class="glyphicon glyphicon-log-out"></span> Back
+      </a>
+<!--        <li><a href="sass.html">Sass</a></li>-->
+<!--        <li><a href="badges.html">Components</a></li>-->
+<!--        <li><a href="collapsible.html">JavaScript</a></li>-->
+      </ul>
+    </div>
+  </nav>
+  
+<div style="font-size:19pt;
+background-color:teal;
+  width:25%;
+<!--   pading-bottom:5%;-->
+  margin-left: 33%;
+ font-family: Helvetica;
+ font-size:19pt;
+ color:rgb(53, 30, 30);
+ font-style: italic;
+ text-align: center;
+    padding-bottom:1%;
+  border-bottom-left-radius: 4rem;
+  border-bottom-right-radius: 4rem;
+box-shadow: 1px 5px 8px black;
+margin-bottom:-5%;
+">
+<p><b>Teachers Information</b></p>
+    </div>
+</header>
+    <br/>
+    <br/>
+    <br/><br/>
+<!--             <div style="margin-left:15%;">-->
+<!-- <span style="margin-left:12%;"></span>-->
+ <div class="row">
+    <div class="col-2">
+<div style="background-color:lightgrey;border-radius:12rem">
+        <a data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">search </i> </a>
+<span style="font-family:cursive;font-size:16pt">Search</span>
+    Teacher
+</div>
+</div>
+    <div class="col-8">
+<div style="border-bottom-left-radius:10rem; border-bottom-right-radius:10rem;" class="collapse" id="collapseExample">
+  <div class="card card-body">
+
+ <form action="/searchTeacher" method="post">
+    <div class="container">
+<div class="row">
+    <div class="col-9">
+<div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input  name="searchTeacher" id="icon_prefix" type="email" class="validate">
+          <label for="icon_prefix">Enter Email</label>
+        </div>
+<!--     <input type="text" name="searchStd" placeholder="enter to search student"/>-->
+
+    </div>
+    <div class="col-2">
+
+        <button  class="btn waves-effect waves-light" type="submit" name="action">Search
+
+            <i class="material-icons right">search</i>
+  </button>
+
+    </div>
+</div>
+    </div>
+</form>
+  </div>
+</div>
+<!-- <i class="material-icons right">error</i> -->
+</div>
+
+<i class="material-icons right">{{err}}</i><span class="animated bounceInLeft" style="color:firebrick;font-size:15pt;display:inline"><b>{{found}}</b></span>
+ 
+<!--</div>-->
+    </div>
+<!-- <div>{{found}}</div> -->
+
+
+                 <div class="container">
+                    <!-- <i class="material-icons right">error</i> -->
+                <div  class="row">
+             {% for user in data %}
+ <div class="col-8 col-md-6">
+
+
+    <div style="border-radius:8%;" class="card horizontal">
+      <div class="card-image">
+        <img  height="200" style="border-bottom-right-radius:5rem;" class="card-img-top"  src="/static/{{user["picture"]}}" />
+<!--           <img style="margin-left:125%; margin-top:-76%; margin-bottom:32%;" src="../static/images/classroom.png"/>-->
+          <span style="margin-left:129%;"></span>
+        <div  class="chip">
+
+            <img height="50" src="../static/images/classroom1.png"/>
+            Teacher
+
+            </div>
+
+
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+<table>
+    <tr>
+        <td><b>Name:</b></td>
+        <td>{{user["userName"]}}</td>
+    </tr>
+    <tr>
+        <td><b>Email:</b></td>
+        <td>{{user["email"]}}</td>
+    </tr>
+    <tr>
+        <td><b>Phone:</b></td>
+        <td>{{user["phone"]}}</td>
+    </tr>
+    <tr>
+        <td><b>Password:</b></td>
+        <td>{{user["pasword"]}}</td>
+    </tr>
+    
+</table>
+       <!-- <p> -->
+
+           <!-- <b>Name:</b>{{user["userName"]}}<br/><b>Email:</b>{{user["email"]}}<br/><b>Phone:</b>{{user["phone"]}}<br/><b>Password:</b>{{user["pasword"]}}</p> -->
+
+        </div>
+         <form action="/deleteTeacher" method="post">
+                                      <input name="target_user" value={{user["userName"]}} type="hidden"/>
+                                     <button style="margin-left:3%;border-radius:5rem;" onclick="M.toast({html: 'User Deleted Successfully!'})"  class="btn btn-danger"> <i class="material-icons prefix">delete</i> Delete</button>
+         </form>
+      </div>
+    </div>
+  </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+<!--                 </div>-->
+ </div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
